@@ -29,7 +29,12 @@
 
         }
         .form-container{
-            width:100%;
+           width: 100%;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         .form-container h2{
             text-align: center;

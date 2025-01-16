@@ -35,7 +35,7 @@ namespace EmailForm
             ,[email]
             ,[message])
             VALUES
-            (@name, @email, @message)";
+            ('"+name+ "','"+email+"', '"+message+"')";
                 SqlCommand cmd = new SqlCommand(query, con);
                 
                 try
