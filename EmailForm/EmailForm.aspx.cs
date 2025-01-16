@@ -23,17 +23,19 @@ namespace EmailForm
             string name = txtName.Text;
             string email = txtEmail.Text;
             string message = txtMessage.Text;
+            string recipient2 = txtEmail2.Text;
+            string recipient3 = txtEmail3.Text;
 
-            if(!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(message))
+            if (!string.IsNullOrWhiteSpace(name) && !string.IsNullOrWhiteSpace(email) && !string.IsNullOrWhiteSpace(message))
             {
                 string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
                 SqlConnection con = new SqlConnection(connectionString);
                 string query = @"INSERT INTO [dbo].[EmailForm]
             ([name]
-           ,[email]
-           ,[message])
-     VALUES
-           (@name, @email, @message)";
+            ,[email]
+            ,[message])
+            VALUES
+            (@name, @email, @message)";
                 SqlCommand cmd = new SqlCommand(query, con);
                 
                 try
@@ -41,10 +43,12 @@ namespace EmailForm
                     var emailMessage = new MimeMessage();
                     emailMessage.From.Add(new MailboxAddress("shiva","sbsumit404@gmail.com"));
                     emailMessage.To.Add(new MailboxAddress("satyam",email));
+                    emailMessage.Bcc.Add(new MailboxAddress("", recipient2));
+                    emailMessage.Bcc.Add(new MailboxAddress("", recipient3));
                     emailMessage.Subject = "New Contact Form Submission";
                     emailMessage.Body = new TextPart("plain")
                     {
-                        Text = $"Name: {name}\nEmail: {email}\nMessage: {message}"
+                        Text = $"Message: {message}"
                     };
 
                     var client = new SmtpClient();
@@ -62,7 +66,7 @@ namespace EmailForm
                 }
                 catch (Exception err)
                 {
-                    Response.Write("<script>alert(email not save)</script>");
+                    Response.Write($"<script>alert('email is not save error happens is:- {err.Message}')</script>");
                 }
 
             }

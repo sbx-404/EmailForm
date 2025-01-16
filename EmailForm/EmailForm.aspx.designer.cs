@@ -42,6 +42,24 @@ namespace EmailForm
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
+        /// txtEmail2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmail2;
+
+        /// <summary>
+        /// txtEmail3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEmail3;
+
+        /// <summary>
         /// txtMessage control.
         /// </summary>
         /// <remarks>
